@@ -1,3 +1,4 @@
+/*
 package com.example.flowerpotapp;
 
 import android.content.Context;
@@ -19,7 +20,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         public TextView name;
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
-            name = itemView.findViewById(R.id.device_name);
+            //name = itemView.findViewById(R.id.device_name);
         }
     }
 
@@ -47,3 +48,5 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         return parent.database.getItemCount();
     }
 }
+
+ */

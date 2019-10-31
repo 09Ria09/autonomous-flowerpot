@@ -22,21 +22,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        database = new Database();
-
-        //searching the network for out devices
-        database.fill();
+        database = new Database(this);
 
         //setting up the gesture detector
         mDetector = new GestureDetectorCompat(this, new MyGestureListener());
 
         //setting up the recycle view
+        /*
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         mAdapter = new MyAdapter(this);
         recyclerView.setAdapter(mAdapter);
+
+         */
     }
 
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
