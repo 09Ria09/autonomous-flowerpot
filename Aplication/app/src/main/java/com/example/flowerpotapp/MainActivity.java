@@ -49,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
             float relX = event2.getX() - event1.getX();
             float relY = event2.getY() - event1.getY();
             if(relX > 0 && relX > Math.abs(relY)){
-                Log.d("gestures", "camera");
+                Log.d("gestures", "go left");
 
             }
             if(relX < 0 && Math.abs(relX) > Math.abs(relY)){
-                Log.d("gestures", "friends requests");
+                Log.d("gestures", "go right");
 
             }
             return true;
