@@ -5,22 +5,27 @@ import android.content.Context;
 import android.net.wifi.WifiManager;
 import android.util.Log;
 
+import java.io.IOException;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.nio.channels.FileLock;
 import java.util.ArrayList;
 
 public class Database {
 
     private Context context;
-    private ArrayList<Device> list;
+    private ArrayList<Flowerpot> list;
     private final int timeout=100;
+    private final String debugTag = "debugNetwork";
 
     public Database(Context context){
         //TODO scan the network and fill the database
         this.context = context;
-        startPingService(context);
+        Thread thread = new Thread(new NetworkScanner(context));
+        thread.start();
     }
 
-    Device getDevice(int position){
+    Flowerpot getFlowerpot(int position){
         return list.get(position);
     }
 
@@ -30,34 +35,38 @@ public class Database {
 
     private void startPingService(Context context)
     {
+        InetAddress in;
+
         try {
 
-            Log.d("network", "got here");
+            Log.d(debugTag, "got here");
             WifiManager mWifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             String subnet = getSubnetAddress(mWifiManager.getDhcpInfo().gateway);
-            Log.d("network", subnet);
+            Log.d(debugTag, subnet);
 
             for (int i=1;i<255;i++){
 
                 String host = subnet + "." + i;
-                Log.d("network", host);
-                Log.d("network", Integer.toString(i));
+                Log.d(debugTag, host);
+
+
 
                 if (InetAddress.getByName(host).isReachable(timeout)){
-                    Log.d("network", "yes");
-                    Log.d("network", "Reachable Host: " + host);
+                    Log.d(debugTag, "yes");
+                    String hostName = getHostNameFromIp(host);
+                    if(isFlowerPot(hostName))
+                        list.add(new Flowerpot(host, hostName));
                 }
-                else
-                {
-                    Log.d("network", "Not Reachable Host: " + host);
-                    Log.d("network", "no");
+                else {
+                    //Log.d("network", "Not Reachable Host: " + host);
+                    Log.d(debugTag, "no");
                 }
             }
 
 
         }
         catch(Exception e){
-            //System.out.println(e);
+            Log.d(debugTag, e.toString());
         }
     }
 
@@ -70,5 +79,26 @@ public class Database {
                 (address >> 16 & 0xff));
 
         return ipString;
+    }
+
+    private boolean isFlowerPot(String name){
+        return true;
+    }
+
+    private String getHostNameFromIp(String ip){
+        return "";
+    }
+
+    private class NetworkScanner implements Runnable{
+
+        private Context context;
+
+        public NetworkScanner(Context context){
+            this.context = context;
+        }
+
+        public void run(){
+            startPingService(context);
+        }
     }
 }
