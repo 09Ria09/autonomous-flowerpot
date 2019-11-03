@@ -2,10 +2,9 @@ package com.example.flowerpotapp;
 
 public class Flowerpot {
 
-    private String ip, hostname;
+    private String ip;
 
-    public Flowerpot(String ip, String hostname){
+    public Flowerpot(String ip){
         this.ip = ip;
-        this.hostname = hostname;
     }
 }

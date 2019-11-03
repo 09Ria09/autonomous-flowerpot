@@ -53,11 +53,8 @@ public class Database {
 
                 if (InetAddress.getByName(host).isReachable(timeout)){
                     Log.d(debugTag, "yes");
-                    String hostName = InetAddress.getByName(host).getHostName();
-                    Log.d(debugTag, hostName);
-                    if(isFlowerPot(hostName)) {
-                        list.add(new Flowerpot(host, hostName));
-                        //Log.d(debugTag, hostName);
+                    if(isFlowerPot(host)) {
+                        list.add(new Flowerpot(host));
                     }
                 }
                 else {
@@ -84,8 +81,9 @@ public class Database {
         return ipString;
     }
 
-    private boolean isFlowerPot(String name){
+    private boolean isFlowerPot(String ip){
         return false;
+        //TODO make true and check the empty reference bug from .add
     }
 
     private class NetworkScanner implements Runnable{
