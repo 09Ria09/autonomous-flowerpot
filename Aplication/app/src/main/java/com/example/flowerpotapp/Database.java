@@ -84,6 +84,11 @@ public class Database {
     private boolean isFlowerPot(String ip){
         return false;
         //TODO make true and check the empty reference bug from .add
+        /*
+        TcpCommunication tcpCommunication = new TcpCommunication(ip, 1234);
+        return tcpCommunication.authenticate();
+
+         */
     }
 
     private class NetworkScanner implements Runnable{
