@@ -1,5 +1,6 @@
 package com.example.flowerpotapp;
 
+import android.util.JsonReader;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -45,8 +46,29 @@ public class TcpCommunication {
         return jsonParseOneBool(jsonAnswer);
     }
 
+    public void getInformation(Flowerpot flowerpot){
+        connect();
+        JSONObject dataJson = new JSONObject();
+        try{
+            dataJson.put("request", "information");
+        }
+        catch (JSONException e){
+            Log.d(debugTag, e.toString());
+        }
+        out.println(dataJson);
+        String jsonAnswer = "";
+        try{
+            jsonAnswer = in.readLine();
+        }
+        catch (IOException e){
+            Log.d(debugTag, e.toString());
+        }
+        jsonParseInformation(jsonAnswer, flowerpot);
+        disconnect();
+    }
+
     private boolean jsonParseOneBool(String json){
-        JSONObject object = new JSONObject();
+        JSONObject object;
         boolean answer = false;
         try{
             object = new JSONObject(json);
@@ -56,6 +78,20 @@ public class TcpCommunication {
             Log.d(debugTag, e.toString());
         }
         return answer;
+    }
+
+    private void jsonParseInformation(String json, Flowerpot flowerpot){
+        JSONObject object;
+        try{
+            object = new JSONObject(json);
+            flowerpot.waterProcentage = object.getInt("water");
+            flowerpot.humidity = object.getInt("humidity");
+            flowerpot.light = object.getInt("light");
+            flowerpot.CO2level = object.getInt("CO2");
+        }
+        catch (JSONException e){
+            Log.d(debugTag, e.toString());
+        }
     }
 
     private void connect(){

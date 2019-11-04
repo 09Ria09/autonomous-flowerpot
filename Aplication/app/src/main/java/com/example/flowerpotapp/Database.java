@@ -20,7 +20,6 @@ public class Database {
     private final String debugTag = "debugNetwork";
 
     public Database(Context context){
-        //TODO change to see if i changed my account
         //TODO scan the network and fill the database
         this.context = context;
         list = new ArrayList<Flowerpot>();
@@ -36,6 +35,7 @@ public class Database {
         return list.size();
     }
 
+    //TODO multithreading on 4 threads (maybe 8 but test it out)
     private void startPingService(Context context)
     {
         InetAddress in;
