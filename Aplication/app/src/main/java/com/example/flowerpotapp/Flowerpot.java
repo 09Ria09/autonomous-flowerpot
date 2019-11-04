@@ -7,4 +7,8 @@ public class Flowerpot {
     public Flowerpot(String ip){
         this.ip = ip;
     }
+
+    public String getIp() {
+        return ip;
+    }
 }

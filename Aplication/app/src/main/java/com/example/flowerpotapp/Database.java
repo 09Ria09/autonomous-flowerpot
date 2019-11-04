@@ -1,6 +1,7 @@
 package com.example.flowerpotapp;
 
 
+import android.bluetooth.BluetoothClass;
 import android.content.Context;
 import android.net.wifi.WifiManager;
 import android.util.Log;
@@ -21,6 +22,7 @@ public class Database {
     public Database(Context context){
         //TODO scan the network and fill the database
         this.context = context;
+        list = new ArrayList<Flowerpot>();
         Thread thread = new Thread(new NetworkScanner(context));
         thread.start();
     }
@@ -44,24 +46,22 @@ public class Database {
             String subnet = getSubnetAddress(mWifiManager.getDhcpInfo().gateway);
             Log.d(debugTag, subnet);
 
-            for (int i=1;i<255;i++){
+            for (int i=0;i<255;i++) {
 
                 String host = subnet + "." + i;
                 Log.d(debugTag, host);
 
 
-
-                if (InetAddress.getByName(host).isReachable(timeout)){
+                if (InetAddress.getByName(host).isReachable(timeout)) {
                     Log.d(debugTag, "yes");
-                    if(isFlowerPot(host)) {
+                    if (isFlowerPot(host)) {
                         list.add(new Flowerpot(host));
                     }
-                }
-                else {
-                    //Log.d("network", "Not Reachable Host: " + host);
+                } else {
                     Log.d(debugTag, "no");
                 }
             }
+
 
 
         }
@@ -82,13 +82,8 @@ public class Database {
     }
 
     private boolean isFlowerPot(String ip){
-        return false;
-        //TODO make true and check the empty reference bug from .add
-        /*
         TcpCommunication tcpCommunication = new TcpCommunication(ip, 1234);
         return tcpCommunication.authenticate();
-
-         */
     }
 
     private class NetworkScanner implements Runnable{
