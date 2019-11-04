@@ -20,6 +20,7 @@ public class Database {
     private final String debugTag = "debugNetwork";
 
     public Database(Context context){
+        //TODO change to see if i changed my account
         //TODO scan the network and fill the database
         this.context = context;
         list = new ArrayList<Flowerpot>();
