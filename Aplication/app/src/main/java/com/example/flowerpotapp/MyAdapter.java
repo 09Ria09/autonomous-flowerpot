@@ -2,6 +2,7 @@
 package com.example.flowerpotapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.net.InetAddress;
 
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
@@ -48,7 +51,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         viewHolder.infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(parent, FlowerpotInfoActivity.class);
+                intent.putExtra("flowerpot", position);
+                parent.startActivity(intent);
             }
         });
     }

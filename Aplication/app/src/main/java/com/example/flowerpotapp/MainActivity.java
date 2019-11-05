@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private GestureDetectorCompat mDetector;
     public Database database;
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
          */
     }
+
+    //TODO export the database to a file and at the start check if the file exists to avoid scanning again
 
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
 
