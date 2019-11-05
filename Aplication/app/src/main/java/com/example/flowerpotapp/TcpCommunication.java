@@ -88,6 +88,7 @@ public class TcpCommunication {
             flowerpot.humidity = object.getInt("humidity");
             flowerpot.light = object.getInt("light");
             flowerpot.CO2level = object.getInt("CO2");
+            flowerpot.heat = object.getInt("heat");
         }
         catch (JSONException e){
             Log.d(debugTag, e.toString());

@@ -1,4 +1,4 @@
-/*
+
 package com.example.flowerpotapp;
 
 import android.content.Context;
@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,9 +19,11 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView name;
+        public Button infoButton;
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
-            //name = itemView.findViewById(R.id.device_name);
+            name = itemView.findViewById(R.id.device_name);
+            infoButton = itemView.findViewById(R.id.info_button);
         }
     }
 
@@ -42,6 +45,12 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         final Flowerpot flowerpot = parent.database.getFlowerpot(position);
         final MyViewHolder viewHolder = (MyViewHolder) viewHolderTemp;
         viewHolder.name.setText(flowerpot.name);
+        viewHolder.infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     public int getItemCount(){
@@ -49,4 +58,4 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     }
 }
 
- */
+

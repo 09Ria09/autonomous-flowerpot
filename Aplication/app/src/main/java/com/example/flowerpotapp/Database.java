@@ -62,9 +62,6 @@ public class Database {
                     Log.d(debugTag, "no");
                 }
             }
-
-
-
         }
         catch(Exception e){
             Log.d(debugTag, e.toString());
