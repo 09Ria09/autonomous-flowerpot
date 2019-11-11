@@ -35,7 +35,7 @@ public class Database {
         return list.size();
     }
 
-    //TODO multithreading on 4 threads (maybe 8 but test it out)
+    //TODO multithreading on 4 threads
     private void startPingService(Context context)
     {
         InetAddress in;

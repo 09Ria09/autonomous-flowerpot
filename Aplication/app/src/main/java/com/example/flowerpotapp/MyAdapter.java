@@ -52,7 +52,10 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(parent, FlowerpotInfoActivity.class);
-                intent.putExtra("flowerpot", position);
+                intent.putExtra("waterProcentage", flowerpot.waterProcentage);
+                intent.putExtra("heat", flowerpot.heat);
+                intent.putExtra("humidity", flowerpot.humidity);
+                intent.putExtra
                 parent.startActivity(intent);
             }
         });

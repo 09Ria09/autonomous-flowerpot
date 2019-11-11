@@ -18,10 +18,8 @@ public class FlowerpotInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flowerpot_info);
 
-        //get the flowerpot we are representing
+        //get intent
         Intent intent = getIntent();
-        position = intent.getIntExtra("flowerpot", 0);
-
 
         //initiate views
         waterProcentage = findViewById(R.id.water);
@@ -31,10 +29,10 @@ public class FlowerpotInfoActivity extends AppCompatActivity {
         CO2levels = findViewById(R.id.CO2levels);
 
         //set text
-        waterProcentage.setText(flowerpot.waterProcentage);
-        heat.setText(flowerpot.heat);
-        humidity.setText(flowerpot.humidity);
-        light.setText(flowerpot.light);
-        CO2levels.setText(flowerpot.CO2level);
+        waterProcentage.setText(intent.getIntExtra("waterProcentage", 0));
+        heat.setText(intent.getIntExtra("heat", 0));
+        humidity.setText(intent.getIntExtra("humidity", 0));
+        light.setText(intent.getIntExtra("light", 0));
+        CO2levels.setText(intent.getIntExtra("CO2levels", 0));
     }
 }
