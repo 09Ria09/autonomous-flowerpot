@@ -3,6 +3,7 @@ package com.example.flowerpotapp;
 public class Flowerpot {
 
     private String ip;
+    public String name;
     public int waterProcentage, humidity, light, CO2level, heat;
 
     public Flowerpot(String ip){

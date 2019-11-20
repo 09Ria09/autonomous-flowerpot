@@ -55,7 +55,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 intent.putExtra("waterProcentage", flowerpot.waterProcentage);
                 intent.putExtra("heat", flowerpot.heat);
                 intent.putExtra("humidity", flowerpot.humidity);
-                intent.putExtra
+                intent.putExtra("light", flowerpot.light);
+                intent.putExtra("CO2", flowerpot.CO2level);
                 parent.startActivity(intent);
             }
         });
