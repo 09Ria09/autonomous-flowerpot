@@ -1,6 +1,6 @@
 import Device
 
-device = Device()
+device = Device.Device()
 
 if __name__ == '__main__':
     while True:
@@ -8,9 +8,9 @@ if __name__ == '__main__':
 
         if s == "add":
             minWater, maxWater, waterPumpPort, waterSensorPort = input("minWater maxWater  waterPumpPort  waterSensorPort")
-            device.addPot(minWater, maxWater, waterPumpPort, waterSensorPort)
+            device.add_pot(minWater, maxWater, waterPumpPort, waterSensorPort)
 
         if s == "close":
             break
 
-        device.runIteration()
+        device.run_iteration()
