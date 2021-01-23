@@ -1,4 +1,7 @@
 import time
+import gpio
+
+watering_constant = 0.5
 
 
 class Pot:
@@ -6,16 +9,23 @@ class Pot:
     min_water = 0
     max_water = 0
 
-    water_pump_port = 0
-    water_sensor_port = 0
+    pump_pow = 0
+    pump_in1 = 0
+    pump_in2 = 0
 
     time_last_watering = 0.0
 
-    def __init__(self, min_water, max_water, water_pump_port, water_sensor_port):
+    def __init__(self, min_water, max_water, pump_pow, pump_in1, pump_in2):
         self.min_water = min_water
         self.max_water = max_water
-        self.water_pump_port = water_pump_port
-        self.water_sensor_port = water_sensor_port
+        self.pump_pow = pump_pow
+        self.pump_in1 = pump_in1
+        self.pump_in2 = pump_in2
+
+        # pump pins
+        gpio.setup(self.pump_pow, gpio.OUT)
+        gpio.setup(self.pump_in1, gpio.OUT)
+        gpio.setup(self.pump_in2, gpio.OUT)
 
     def run_iteration(self):
 
@@ -31,7 +41,28 @@ class Pot:
             self.time_last_watering = time.time()
 
     def get_soil_humidity(self):
-        return 100
+        return 1
 
     def pump_water(self, x):
-        return
+
+        water_time = x * watering_constant
+
+        # run clockwise
+        gpio.output(self.pump_in1, gpio.HIGH)
+        gpio.output(self.pump_in2, gpio.LOW)
+
+        # set motor speed
+        gpio.output(self.pump_pow, gpio.HIGH)
+
+        # disable standby
+        gpio.output(13, gpio.HIGH)
+
+        time.sleep(water_time)
+
+        # reset pins
+        gpio.output(self.pump_in1, gpio.LOW)
+        gpio.output(self.pump_in2, gpio.LOW)
+        gpio.output(self.pump_pow, gpio.LOW)
+
+        # reset standby
+        gpio.output(13, gpio.LOW)
