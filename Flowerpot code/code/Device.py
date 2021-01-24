@@ -7,7 +7,6 @@ class Device:
     pots = []
 
     def __init__(self):
-        gpio.cleanup()
         gpio.setmode(gpio.BOARD)
 
     def add_pot(self, min_water, max_water, pump_pow, pump_in1, pump_in2):
