@@ -1,5 +1,5 @@
 import time
-import gpio
+import RPi.GPIO as gpio
 
 watering_constant = 0.5
 

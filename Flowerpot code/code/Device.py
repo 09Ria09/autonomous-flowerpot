@@ -1,5 +1,5 @@
 import Pot
-import gpio
+import RPi.GPIO as gpio
 
 
 class Device:
