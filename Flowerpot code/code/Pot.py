@@ -45,6 +45,9 @@ class Pot:
 
     def pump_water(self, x):
 
+
+        print("ai intrat prostule")
+
         water_time = x * watering_constant
 
         # run clockwise
