@@ -19,6 +19,9 @@ class Device:
 
         self.rotary = Rotary.Rotary(rotary_clk, rotary_dt, rotary_press, self.on_turn, self.on_press)
 
+        self.draw_home()
+        time.sleep(5000)
+
     def add_pot(self, min_water, max_water, pump_pow, pump_in1, pump_in2):
         self.pots.append(Pot.Pot(min_water, max_water, pump_pow, pump_in1, pump_in2))
 
