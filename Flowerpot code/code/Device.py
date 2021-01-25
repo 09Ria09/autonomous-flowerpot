@@ -91,6 +91,8 @@ class Device:
             self.screen.lcd_display_string(s, i)
 
     def on_turn(self, x):
+
+        self.last_page = -2
         self.row_selected = self.row_selected + x
 
         if self.row_selected == 0:
