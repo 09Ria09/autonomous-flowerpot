@@ -61,7 +61,7 @@ class Device:
         print(self.row_selected)
         self.screen.lcd_clear()
 
-        self.screen.lcd_display_string("The device has 100% water", 1)
+        self.screen.lcd_display_string("The device has 0% water", 1)
 
         for i in range(1, 4):
             s = "Plant " + str(i)
