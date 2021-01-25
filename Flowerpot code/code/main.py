@@ -12,7 +12,7 @@ while True:
 
     try:
         device.run_iteration()
-        print("called run_iteration")
+        # print("called run_iteration")
     except KeyboardInterrupt:
         gpio.cleanup()
         break

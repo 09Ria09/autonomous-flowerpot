@@ -4,6 +4,8 @@ import RPi.GPIO as gpio
 
 class Rotary:
 
+    er = 2
+
     def __init__(self, clk, dt, press, on_turn, on_press):
         self.clk = clk
         self.dt = dt
@@ -27,12 +29,20 @@ class Rotary:
 
         if clk_state != self.clk_last_state:
             if clk_state == dt_state:
-                self.on_turn(1)
+                self.counter = self.counter + 1
             else:
-                self.on_turn(-1)
+                self.counter = self.counter - 1
 
         self.clk_last_state = clk_state
         time.sleep(0.01)
+
+        if self.counter > self.er:
+            self.on_turn(1)
+            self.counter = 0
+
+        if self.counter < -self.er:
+            self.on_turn(-1)
+            self.counter = 0
 
         curr_time = time.time()
 

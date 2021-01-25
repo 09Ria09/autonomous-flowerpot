@@ -27,7 +27,7 @@ class Device:
         self.pots.append(Pot.Pot(min_water, max_water, pump_pow, pump_in1, pump_in2))
 
     def run_iteration(self):
-        print("got to run_iteration")
+        # print("got to run_iteration")
         for pot in self.pots:
             pot.run_iteration()
 
@@ -49,7 +49,7 @@ class Device:
 
         self.last_page = self.page
 
-        print("got to main draw")
+        # print("got to main draw")
         if self.page == -1:
             self.draw_home()
         else:
@@ -57,7 +57,8 @@ class Device:
 
     def draw_home(self):
 
-        print("got to draw_home")
+        # print("got to draw_home")
+        print(self.row_selected)
         self.screen.lcd_clear()
 
         self.screen.lcd_display_string("The device has 100% water", 1)
@@ -92,14 +93,15 @@ class Device:
 
     def on_turn(self, x):
 
+        x = -x
         self.last_page = -2
         self.row_selected = self.row_selected + x
 
-        if self.row_selected == 0:
+        if self.row_selected == 1:
             self.row_selected = 4
 
         if self.row_selected == 5:
-            self.row_selected = 1
+            self.row_selected = 2
 
     def on_press(self):
         if self.page == -1:
