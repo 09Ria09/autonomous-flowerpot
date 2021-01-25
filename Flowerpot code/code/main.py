@@ -1,4 +1,5 @@
 import Device
+import RPi.GPIO as gpio
 
 device = Device.Device()
 device.add_pot(0.4, 0.6, 7, 12, 11)
@@ -18,6 +19,7 @@ if __name__ == '__main__':
         #    device.add_pot(minWater, maxWater, waterPumpPort, waterSensorPort)
 
         if s == "close":
+            gpio.cleanup()
             break
 
         device.run_iteration()

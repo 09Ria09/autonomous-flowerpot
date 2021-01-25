@@ -1,5 +1,5 @@
 import time
-import gpio
+import RPi.GPIO as gpio
 
 watering_constant = 0.5
 
@@ -27,6 +27,10 @@ class Pot:
         gpio.setup(self.pump_in1, gpio.OUT)
         gpio.setup(self.pump_in2, gpio.OUT)
 
+        gpio.output(self.pump_pow, gpio.LOW)
+        gpio.output(self.pump_in1, gpio.LOW)
+        gpio.output(self.pump_in2, gpio.LOW)
+
     def run_iteration(self):
 
         curr_time = time.time()
@@ -44,6 +48,9 @@ class Pot:
         return 1
 
     def pump_water(self, x):
+
+
+        print("ai intrat prostule")
 
         water_time = x * watering_constant
 
