@@ -2,6 +2,7 @@ import Device
 
 device = Device.Device()
 device.add_pot(0.4, 0.6, 7, 12, 11)
+# device.add_pot(0.4, 0.6, 18, 15, 16)
 
 if __name__ == '__main__':
     while True:

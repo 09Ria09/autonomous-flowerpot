@@ -1,8 +1,12 @@
 import Pot
-import gpio
+import Screen
 
 
 class Device:
+
+    page = -1
+    row_selected = 2
+    screen = Screen.lcd()
 
     pots = []
 
@@ -12,3 +16,16 @@ class Device:
     def run_iteration(self):
         for pot in self.pots:
             pot.run_iteration()
+
+    def draw_home(self):
+        self.screen.lcd_clear()
+
+        self.screen.lcd_display_string("The device has 100% water", 1)
+
+        for i in range(1, 4):
+            s = "Plant " + str(i)
+
+            if i + 1 == self.row_selected:
+                s = s + " <"
+
+            self.screen.lcd_display_string(s, i+1)
