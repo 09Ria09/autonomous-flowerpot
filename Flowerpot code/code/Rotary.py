@@ -46,6 +46,8 @@ class Rotary:
 
         curr_time = time.time()
 
+        print(gpio.input(self.press))
+
         if curr_time - self.last_press > 0.1:
 
             press_state = gpio.input(self.press)
