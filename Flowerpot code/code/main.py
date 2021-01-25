@@ -8,22 +8,21 @@ device = Device.Device(16, 18, 22)
 device.add_pot(0.4, 0.6, 7, 12, 11)
 # device.add_pot(0.4, 0.6, 18, 15, 16)
 
-if __name__ == '__main__':
-    while True:
-        s = input()
+while True:
+    s = input()
 
-        # if s == "add":
+    # if s == "add":
 
-        #   min_water = input("min_water")
-        #  max_water = input("max_water")
+    #   min_water = input("min_water")
+    #  max_water = input("max_water")
 
-        # pump ports
-        #    pump
-        #    device.add_pot(minWater, maxWater, waterPumpPort, waterSensorPort)
+    # pump ports
+    #    pump
+    #    device.add_pot(minWater, maxWater, waterPumpPort, waterSensorPort)
 
-        if s == "close":
-            gpio.cleanup()
-            break
+    if s == "close":
+        gpio.cleanup()
+        break
 
-        device.run_iteration()
-        print("called run_iteration")
+    device.run_iteration()
+    print("called run_iteration")
