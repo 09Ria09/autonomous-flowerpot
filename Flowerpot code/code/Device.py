@@ -1,3 +1,4 @@
+import time
 import Pot
 import Screen
 import Rotary
@@ -17,6 +18,10 @@ class Device:
         self.screen = Screen.lcd()
 
         self.rotary = Rotary.Rotary(rotary_clk, rotary_dt, rotary_press, self.on_turn, self.on_press)
+
+        print("test")
+        self.screen.lcd_display_string("test", 1)
+        time.sleep(5000)
 
     def add_pot(self, min_water, max_water, pump_pow, pump_in1, pump_in2):
         self.pots.append(Pot.Pot(min_water, max_water, pump_pow, pump_in1, pump_in2))
@@ -94,10 +99,5 @@ class Device:
                 self.page = self.row_selected - 2
 
         else:
-            if self.row_selected == 1:
-                self.display_water_level(self.pots[self.page].get_soil_humidity())
-
-            if self.row_selected == 2:
-                self.pots
             if self.row_selected == 4:
                 self.page = -1
