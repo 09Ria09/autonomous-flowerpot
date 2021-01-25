@@ -12,6 +12,7 @@ class Device:
 
         self.pots = []
 
+        self.last_page = -1
         self.page = -1
         self.row_selected = 2
 
@@ -42,6 +43,11 @@ class Device:
         1 plant 1
         2 plant 2
         """
+
+        if self.page == self.last_page:
+            return
+
+        self.last_page = self.page
 
         print("got to main draw")
         if self.page == -1:
