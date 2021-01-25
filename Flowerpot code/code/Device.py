@@ -94,6 +94,10 @@ class Device:
                 self.page = self.row_selected - 2
 
         else:
+            if self.row_selected == 1:
+                self.display_water_level(self.pots[self.page].get_soil_humidity())
 
+            if self.row_selected == 2:
+                self.pots
             if self.row_selected == 4:
                 self.page = -1
