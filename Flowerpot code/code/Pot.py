@@ -6,21 +6,14 @@ watering_constant = 0.5
 
 class Pot:
 
-    min_water = 0
-    max_water = 0
-
-    pump_pow = 0
-    pump_in1 = 0
-    pump_in2 = 0
-
-    time_last_watering = 0.0
-
     def __init__(self, min_water, max_water, pump_pow, pump_in1, pump_in2):
         self.min_water = min_water
         self.max_water = max_water
         self.pump_pow = pump_pow
         self.pump_in1 = pump_in1
         self.pump_in2 = pump_in2
+
+        self.time_last_watering = 0
 
         # pump pins
         gpio.setup(self.pump_pow, gpio.OUT)
@@ -48,7 +41,6 @@ class Pot:
         return 1
 
     def pump_water(self, x):
-
 
         print("ai intrat prostule")
 

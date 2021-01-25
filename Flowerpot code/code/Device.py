@@ -41,7 +41,7 @@ class Device:
         if self.page == -1:
             self.draw_home()
         else:
-            self.draw_plant(self.page)
+            self.draw_plant()
 
     def draw_home(self):
         self.screen.lcd_clear()
@@ -56,7 +56,7 @@ class Device:
 
             self.screen.lcd_display_string(s, i+1)
 
-    def draw_plant(self, x):
+    def draw_plant(self):
         self.screen.lcd_clear()
 
         for i in range(1, 5):
