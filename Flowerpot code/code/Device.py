@@ -26,7 +26,6 @@ class Device:
         self.pots.append(Pot.Pot(min_water, max_water, pump_pow, pump_in1, pump_in2))
 
     def run_iteration(self):
-
         print("got to run_iteration")
         for pot in self.pots:
             pot.run_iteration()

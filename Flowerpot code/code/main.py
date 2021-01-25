@@ -26,3 +26,4 @@ if __name__ == '__main__':
             break
 
         device.run_iteration()
+        print("called run_iteration")
