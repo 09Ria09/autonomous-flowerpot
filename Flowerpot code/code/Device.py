@@ -26,6 +26,22 @@ class Device:
             pot.run_iteration()
 
         self.rotary.check()
+        self.draw()
+
+    def draw(self):
+
+        """"
+        page
+        -1 home
+        0 plant 0
+        1 plant 1
+        2 plant 2
+        """
+
+        if self.page == -1:
+            self.draw_home()
+        else:
+            self.draw_plant(self.page)
 
     def draw_home(self):
         self.screen.lcd_clear()
@@ -40,8 +56,44 @@ class Device:
 
             self.screen.lcd_display_string(s, i+1)
 
-    def on_turn(self):
-        return
+    def draw_plant(self, x):
+        self.screen.lcd_clear()
+
+        for i in range(1, 5):
+
+            s = ""
+            if i == 1:
+                s = "Stats"
+            if i == 2:
+                s = "Change name"
+            if i == 3:
+                s = "Watering mode"
+            if i == 4:
+                s = "Back"
+
+            if i == self.row_selected:
+                s = s + " <"
+
+            self.screen.lcd_display_string(s, i)
+
+    def on_turn(self, x):
+        self.row_selected = self.row_selected + x
+
+        if self.row_selected == 0:
+            self.row_selected = 4
+
+        if self.row_selected == 5:
+            self.row_selected = 1
 
     def on_press(self):
-        return
+        if self.page == -1:
+
+            if self.row_selected == 1:
+                return
+            else:
+                self.page = self.row_selected - 2
+
+        else:
+
+            if self.row_selected == 4:
+                self.page = -1
