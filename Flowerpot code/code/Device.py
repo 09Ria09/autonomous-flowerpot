@@ -19,13 +19,15 @@ class Device:
 
         self.rotary = Rotary.Rotary(rotary_clk, rotary_dt, rotary_press, self.on_turn, self.on_press)
 
-        self.draw_home()
-        time.sleep(5000)
+        # self.draw_home()
+        # time.sleep(5000)
 
     def add_pot(self, min_water, max_water, pump_pow, pump_in1, pump_in2):
         self.pots.append(Pot.Pot(min_water, max_water, pump_pow, pump_in1, pump_in2))
 
     def run_iteration(self):
+
+        print("got to run_iteration")
         for pot in self.pots:
             pot.run_iteration()
 
@@ -42,12 +44,15 @@ class Device:
         2 plant 2
         """
 
+        print("got to main draw")
         if self.page == -1:
             self.draw_home()
         else:
             self.draw_plant()
 
     def draw_home(self):
+
+        print("got to draw_home")
         self.screen.lcd_clear()
 
         self.screen.lcd_display_string("The device has 100% water", 1)
