@@ -12,7 +12,7 @@ class Device:
 
         self.pots = []
 
-        self.last_page = -1
+        self.last_page = 0
         self.page = -1
         self.row_selected = 2
 
