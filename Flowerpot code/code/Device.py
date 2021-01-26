@@ -109,7 +109,10 @@ class Device:
         self.last_page = -2
         self.row_selected = self.row_selected + x
 
-        if self.row_selected == 1:
+        if self.row_selected == 0:
+            self.row_selected = 4
+
+        if self.row_selected == 1 and self.page == -1:
             self.row_selected = 4
 
         if self.row_selected == 5:
