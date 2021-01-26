@@ -116,7 +116,10 @@ class Device:
             self.row_selected = 4
 
         if self.row_selected == 5:
-            self.row_selected = 2
+            if self.page == -1:
+                self.row_selected = 2
+            else
+                self.row_selected = 1
 
     def on_press(self):
 
