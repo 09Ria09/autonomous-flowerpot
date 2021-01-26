@@ -123,4 +123,5 @@ class Device:
 
         else:
             if self.row_selected == 4:
+                self.row_selected = 2
                 self.page = -1
