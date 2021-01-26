@@ -26,7 +26,7 @@ class Rotary:
     def check(self):
         clk_state = gpio.input(self.clk)
         dt_state = gpio.input(self.dt)
-        press_state = gpio.input(self.press)
+        press_state = 1 - gpio.input(self.press)
 
         print(press_state)
 
