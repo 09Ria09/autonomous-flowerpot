@@ -26,6 +26,9 @@ class Rotary:
     def check(self):
         clk_state = gpio.input(self.clk)
         dt_state = gpio.input(self.dt)
+        press_state = gpio.input(self.press)
+
+        print(press_state)
 
         if clk_state != self.clk_last_state:
             if clk_state == dt_state:
@@ -46,12 +49,6 @@ class Rotary:
 
         curr_time = time.time()
 
-        print(gpio.input(self.press))
-
-        if curr_time - self.last_press > 0.1:
-
-            press_state = gpio.input(self.press)
+        if curr_time - self.last_press > 0.1 and press_state:
             self.last_press = curr_time
-
-            if press_state:
-                self.on_press()
+            self.on_press()
