@@ -20,6 +20,8 @@ class Device:
 
         self.rotary = Rotary.Rotary(rotary_clk, rotary_dt, rotary_press, self.on_turn, self.on_press)
 
+        self.time_last_turn = time.time()
+
         # self.draw_home()
         # time.sleep(5000)
 
@@ -33,6 +35,14 @@ class Device:
 
         self.rotary.check()
         self.draw()
+
+        """"
+        curr_time = time.time()
+
+        if curr_time - self.time_last_turn > 3.0:
+            self.time_last_turn = curr_time
+            self.on_press()
+        """
 
     def draw(self):
 
@@ -49,7 +59,7 @@ class Device:
 
         self.last_page = self.page
 
-        # print("got to main draw")
+        print("got to main draw")
         if self.page == -1:
             self.draw_home()
         else:
@@ -92,6 +102,8 @@ class Device:
             self.screen.lcd_display_string(s, i)
 
     def on_turn(self, x):
+
+        self.time_last_turn = time.time()
 
         x = -x
         self.last_page = -2
