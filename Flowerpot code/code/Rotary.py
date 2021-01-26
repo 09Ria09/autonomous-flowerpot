@@ -13,7 +13,7 @@ class Rotary:
 
         gpio.setup(self.clk, gpio.IN, pull_up_down=gpio.PUD_DOWN)
         gpio.setup(self.dt, gpio.IN, pull_up_down=gpio.PUD_DOWN)
-        gpio.setup(self.press, gpio.IN, pull_up_down=gpio.PUD_DOWN)
+        gpio.setup(self.press, gpio.IN, pull_up_down=gpio.PUD_UP)
 
         self.on_turn = on_turn
         self.on_press = on_press
